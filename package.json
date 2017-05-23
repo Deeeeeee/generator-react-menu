@@ -3,11 +3,11 @@
     "author": "JonDi", 
     "version": "0.1.0",
     "main": "index.js", 
-    "description": "基于ract+redux+react-router+es6+webpack的项目目录快速生成器",
+    "description": "基于ract+redux+react-router+es6+webpack的项目目录生成器",
     "scripts": { "test": "echo \"Error: no test specified\" && exit 1" }, 
     "repository": { 
         "type": "git", 
-        "url": "https://github.com/luckykun/generator-reactpackage.git" 
+        "url": "https://github.com/Deeeeeee/generator-react-jondi" 
     }, 
     "keywords": [ "yeoman-generator" ], 
     "license": "MIT", 
