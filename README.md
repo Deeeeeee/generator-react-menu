@@ -1,1 +1,1 @@
-# generator-react-jondi
+# generator-react-menu

@@ -1,5 +1,5 @@
 {
-    "name": "generator-react-jondi",
+    "name": "generator-react-menu",
     "author": "JonDi", 
     "version": "0.1.0",
     "main": "index.js", 
@@ -7,7 +7,7 @@
     "scripts": { "test": "echo \"Error: no test specified\" && exit 1" }, 
     "repository": { 
         "type": "git", 
-        "url": "https://github.com/Deeeeeee/generator-react-jondi" 
+        "url": "https://github.com/Deeeeeee/generator-react-menu" 
     }, 
     "keywords": [ "yeoman-generator" ], 
     "license": "MIT", 
