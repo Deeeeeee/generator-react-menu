@@ -1,7 +1,7 @@
 {
     "name": "generator-react-menu",
     "author": "JonDi", 
-    "version": "0.1.0",
+    "version": "0.1.1",
     "main": "index.js", 
     "description": "基于ract+redux+react-router+es6+webpack的项目目录生成器",
     "scripts": { "test": "echo \"Error: no test specified\" && exit 1" }, 

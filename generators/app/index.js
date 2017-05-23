@@ -10,7 +10,7 @@ var path = require('path');
 var Reactpackage = yeoman.Base.extend({
     info: function() {
         this.log(chalk.green(
-            'I am going to build your app!'
+            'building...'
         ));
     },
     generateBasic: function() {
