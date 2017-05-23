@@ -15,10 +15,13 @@ var Reactpackage = yeoman.Base.extend({
     },
     generateBasic: function() {
         this.directory('src', 'src');
-        this.directory('data', 'data');
         this.copy('package.json', 'package.json');
         this.copy('index.html', 'index.html');
+        this.copy('index-template-pro.html', 'index-template-pro.html');
+        this.copy('index-template-test.html', 'index-template-test.html');
         this.copy('README.md', 'README.md');
+        this.copy('server.js', 'server.js');
+        this.copy('test_server.js', 'test_server.js');
         this.copy('webpack.config.js', 'webpack.config.js');
     },
     generateClient: function() {
