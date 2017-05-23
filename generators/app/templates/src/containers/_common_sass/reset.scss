@@ -1,0 +1,82 @@
+@import "./mixin", "./variables";
+
+body, h1, h2, h3, h4, h5, p, dl, dd, ul, ol, form, input, textarea, th, td, select {
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3, h4, h5,em,strong{
+    font-weight:400;
+}
+em {
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+i {
+    font-style: normal;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+    color: $text-color-2;
+    transition: none;
+    &:active, &:hover {
+        color: $text-color-2;
+        text-decoration: none;
+    }
+}
+
+img {
+    border: none;
+    vertical-align: top;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input, textarea {
+    outline: none;
+}
+
+textarea {
+    resize: none;
+    overflow: auto;
+}
+
+body, button, input, select, textarea {
+    color: $text-color-2;
+    font-family: "Microsoft Yahei", 黑体, Arial, STHei, "Helvetica Neue", Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+hr {
+    width: 1200px;
+    margin: 0 auto;
+    height: 4px;
+    border: 0;
+    background: #e6e8e8;
+}
+
+.clearFix {
+    zoom: 1;
+}
+
+.clearFix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}

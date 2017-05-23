@@ -1,0 +1,33 @@
+@import "./mixin", "./variables", "./reset";
+
+@charset "UTF-8";
+html, body {
+    font-size: 14px;
+    min-width: 1190px;
+}
+
+.layout {
+    width: $layoutWidth;
+    margin: 0 auto;
+    @extend .clearFix;
+}
+
+.tc {
+    text-align: center;
+}
+
+// 隐藏站长统计
+body > a {
+    display: none;
+}
+
+// antd design
+.ant-message-notice-content {
+    background-color: rgba(0, 0, 0, .5) !important;
+    color: #fff;
+}
+
+.ant-confirm-btns {
+    float: none !important;
+    text-align: center;
+}

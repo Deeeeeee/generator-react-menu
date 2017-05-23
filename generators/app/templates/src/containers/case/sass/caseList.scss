@@ -1,0 +1,190 @@
+@import "../../_common_sass/mixin", "../../_common_sass/variables";
+$bigImgHeight   : 500px;
+$bigImgWidth    : 300px;
+$smImgHeight    : 160px;
+$smImgWidth     : 280px;
+
+.case-nav{
+    text-align: center;
+    margin: 30px auto;
+    span{
+        position: relative;
+        @include button($height:28px);
+        display: inline-block;
+        background: none;
+        margin: 0 25px;
+        line-height: 28px;
+        color: $text-color-3;
+        &:hover {
+            background: linear-gradient(120deg, #f7b64d, #f5a728);
+            color: #fff;
+        }
+        &.active{
+            background: linear-gradient(120deg, #f7b64d , #f5a728 );
+            color: #fff;
+            &:after{
+                content: ' ';
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                margin-left: -3px;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 10px solid #f7b64d;
+            }
+        }
+    }
+}
+.case-list{
+    @extend .clearfix;
+    min-height: 520px;
+    .top-case,
+    .base-case{
+        margin:0 8px 20px;
+        background-color: #f5f5f5;
+    }
+    .top-case{
+        width: 576px;
+        height: $bigImgHeight;
+        float: left;
+        .img-wrap{
+            float: left;
+            position: relative;
+            width: $bigImgWidth;
+            height: $bigImgHeight;
+            overflow: hidden;
+            img{
+                width: 100%;
+                height: 100%;
+                background-color: #ccc;
+            }
+            .shadow{
+                position: absolute;
+                transition: .5s ease;
+                bottom: -200px;
+                z-index: 1;
+                background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.5));
+                height: 200px;
+                width: 100%;
+                a{
+                    display: block;
+                    height: 45px;
+                    line-height: 45px;
+                    border-radius: 4px;
+                    text-align: center;
+                    width: 150px;
+                    margin: 80px auto 0;
+                    color: #fff;
+                    border: 1px solid #fff;
+                }
+            }
+            &:hover{
+                .shadow{
+                    bottom: 0;
+                }
+            }
+        }
+        .text-wrap{
+            float: left;
+            position: relative;
+            padding: 15px;
+            width: 276px;
+            height: $bigImgHeight;
+            h5{
+                font-size: 16px;
+                color: $text-color-3;
+            }
+            .item{
+                margin-top: 80px;
+                p{
+                    margin-bottom: 15px;
+                    em{
+                        color: $text-red;
+                    }
+                    span{
+                        color: $text-color-6;
+                    }
+                }
+
+            }
+            .info{
+                position: absolute;
+                width: 100%;
+                padding: 0 15px;
+                bottom: 0;
+                left: 0;
+                line-height: 30px;
+                @extend .clearfix;
+                color: $text-color-9;
+                em{
+                    float: left;
+                }
+                span{
+                    float: right;
+                }
+            }
+        }
+    }
+    .base-case{
+        width: $smImgWidth;
+        height: 240px;
+        float: left;
+        .img-wrap{
+            position: relative;
+            width: $smImgWidth;
+            height: $smImgHeight;
+            overflow: hidden;
+
+            img{
+                width: 100%;
+                height: 100%;
+                background-color: #ccc;
+            }
+            .shadow{
+                position: absolute;
+                height: $smImgHeight;
+                width: 100%;
+                bottom: -$smImgHeight;
+                z-index: 1;
+                background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.5));
+                transition: .5s ease;
+                a{
+                    display: block;
+                    height: 45px;
+                    line-height: 45px;
+                    border-radius: 4px;
+                    text-align: center;
+                    width: 150px;
+                    margin: 60px auto 0;
+                    color: #fff;
+                    border: 1px solid #fff;
+                }
+            }
+            &:hover{
+                .shadow{
+                    bottom: 0;
+                }
+            }
+        }
+        .text-wrap{
+            padding: 15px;
+            h5{
+                font-size: 16px;
+                color: $text-color-3;
+            }
+            .info{
+                @extend .clearfix;
+                color: $text-color-9;
+                line-height: 30px;
+                em{
+                    float: left;
+                }
+                span{
+                    float: right;
+                }
+            }
+        }
+    }
+}

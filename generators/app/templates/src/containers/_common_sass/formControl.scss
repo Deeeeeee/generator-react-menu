@@ -1,0 +1,58 @@
+@import "./mixin", "./variables";
+
+form.android-form {
+    background-color: transparent;
+    padding-top: px2rem(20px);
+    .form-control {
+        padding: 0 px2rem(15px);
+        background-color: $text-color-white;
+        &> a {
+            padding-left: 30px;
+            &.no-label {
+                padding-left: 0;
+            }
+            input {
+                -webkit-user-select: auto;
+            }
+        }
+        label {
+            width: 30px;
+            font-size: px2rem(20px);
+            color: $default-color;
+        }
+        .anticon-close-circle {
+            color: $default-color;
+            font-size: px2rem(20px);
+            position: absolute;
+            right: 0;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+    }
+    & > a {
+        display: block;
+        text-align: center;
+        color: $text-color-white;
+        background: $sub-primary-color2;
+        line-height: 50px;
+        width: 90%;
+        border: 0;
+        border-radius: $border-radius-sm;
+        font-size: 16px;
+        margin: 30px auto 0;
+
+    }
+}
+
+.ant-message-notice-content {
+    text-align: center;
+    background-color: rgba(0,0,0,.8);
+    border: 0;
+    color: $text-color-white;
+    word-break: break-all;
+    font-size: 14px;
+    .anticon.anticon-info-circle{
+        display: none;
+    }
+}

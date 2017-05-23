@@ -1,0 +1,24 @@
+@import
+"../../../containers/_common_sass/mixin",
+"../../../containers/_common_sass/variables";
+
+.header{
+    position: relative;
+    height: $topBarHeight;
+    line-height: $topBarHeight;
+    background-color: #efefef;
+    border-bottom: 1px solid $base-border-color;
+    z-index: 1;
+    .layout{
+        position: relative;
+        @extend .clearfix;
+        h1{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        a:hover{
+            color: $text-yellow;
+        }
+    }
+}
