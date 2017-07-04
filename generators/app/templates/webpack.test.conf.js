@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 var mainDirectory = './main.js';
 var presets = ['react', 'es2015', 'stage-0'];
 var entry = [mainDirectory];
@@ -66,6 +67,14 @@ module.exports = {
             filename: '../index.html',
             template: path.join(__dirname, 'index-template-test.html'),
             favicon: path.join(__dirname, '/src/public/favicon.ico')
-        })
+        }),
+        new CleanWebpackPlugin(
+            ['build/*',],　 //匹配删除的文件
+            {
+                root: __dirname,       　　　　　　　　　　//根目录
+                verbose:  true,        　　　　　　　　　　//开启在控制台输出信息
+                dry:      false        　　　　　　　　　　//启用删除文件
+            }
+        )
     ]
 };

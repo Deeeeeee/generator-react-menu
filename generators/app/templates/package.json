@@ -8,12 +8,8 @@
   },
   "main": "index.js",
   "scripts": {
-    "build-test-win": "rm -rf build&&set NODE_ENV=test&&webpack ",
-    "build-test-mac": "rm -rf build&&export NODE_ENV=test&&webpack",
-    "build-pro-win": "rm -rf build&&set NODE_ENV=production&&webpack",
-    "build-pro-mac": "rm -rf build&&export NODE_ENV=production&&webpack",
-    "build-test"  : "rm -rf build&&webpack --config webpack.test.conf.js",
-    "build-pro"   : "rm -rf build&&webpack --config webpack.prod.conf.js",
+    "build-test": "webpack --config webpack.test.conf.js",
+    "build-pro": "webpack --config webpack.pro.conf.js"
   },
   "author": "",
   "license": "ISC",
@@ -30,6 +26,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0",
+    "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.23.1",
     "express": "^4.13.4",
     "file-loader": "^0.8.5",

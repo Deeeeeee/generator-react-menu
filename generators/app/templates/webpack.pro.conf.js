@@ -1,15 +1,14 @@
 var path = require('path');
-var ENV_PRO = process.env.NODE_ENV === "production";
-var ENV_TEST = process.env.NODE_ENV === "test";
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 var mainDirectory = './main.js';
-var presets = !ENV_PRO && !ENV_TEST ? ['react', 'es2015', 'stage-0', 'react-hmre'] : ['react', 'es2015', 'stage-0'];
-var entry = !ENV_PRO && !ENV_TEST ? ['webpack-hot-middleware/client', mainDirectory] : [mainDirectory];
+var presets = ['react', 'es2015', 'stage-0'];
+var entry = [mainDirectory];
 
 module.exports = {
     context: path.join(__dirname, 'src'),
-    devtool: !ENV_PRO &&!ENV_TEST ? "inline-sourcemap" : false,
+    devtool: false,
     entry: entry,
     module: {
         rules: [
@@ -52,12 +51,9 @@ module.exports = {
         path: path.join(__dirname, '/build/dist'),
         filename: "[name].min.js",
         chunkFilename: '[id]_[hash].chunk.min.js',
-        publicPath: !ENV_PRO && !ENV_TEST ? '/dist/' : '/muqian-client/dist/'
+        publicPath: '/dist/'
     },
-    plugins: !ENV_PRO && !ENV_TEST ? [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin()
-    ] : [
+    plugins: [
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"'
         }),
@@ -69,8 +65,16 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             filename: '../index.html',
-            template: !ENV_PRO ? path.join(__dirname, 'index-template-test.html') : path.join(__dirname, 'index-template-pro.html'),
+            template: path.join(__dirname, 'index-template-pro.html'),
             favicon: path.join(__dirname, '/src/public/favicon.ico')
-        })
+        }),
+        new CleanWebpackPlugin(
+            ['build/*',],　 //匹配删除的文件
+            {
+                root: __dirname,       　　　　　　　　　　//根目录
+                verbose:  true,        　　　　　　　　　　//开启在控制台输出信息
+                dry:      false        　　　　　　　　　　//启用删除文件
+            }
+        )
     ]
 };
