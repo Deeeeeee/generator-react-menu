@@ -24,7 +24,6 @@ var Reactpackage = yeoman.Base.extend({
         this.copy('webpack.config.js', 'webpack.config.js');
         this.copy('webpack.test.conf.js', 'webpack.test.conf.js');
         this.copy('webpack.pro.conf.js', 'webpack.pro.conf.js');
-        this.copy('.gitignore', '.gitignore');
     },
     generateClient: function() {
         this.sourceRoot(path.join(__dirname, 'templates'));
