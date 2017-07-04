@@ -8,10 +8,12 @@
   },
   "main": "index.js",
   "scripts": {
-    "build-test": "rm -rf build&&set NODE_ENV=test&&webpack ",
+    "build-test-win": "rm -rf build&&set NODE_ENV=test&&webpack ",
     "build-test-mac": "rm -rf build&&export NODE_ENV=test&&webpack",
-    "build-pro": "rm -rf build&&set NODE_ENV=production&&webpack",
-    "build-pro-mac": "rm -rf build&&export NODE_ENV=production&&webpack"
+    "build-pro-win": "rm -rf build&&set NODE_ENV=production&&webpack",
+    "build-pro-mac": "rm -rf build&&export NODE_ENV=production&&webpack",
+    "build-test"  : "rm -rf build&&webpack --config webpack.test.conf.js",
+    "build-pro"   : "rm -rf build&&webpack --config webpack.prod.conf.js",
   },
   "author": "",
   "license": "ISC",
