@@ -20,6 +20,7 @@ class Home extends React.Component {
         const {actions, home } = this.props;
         return (
             <MainSection actions={actions} home={home}  currentNav={[0,-1]} className="home-page">
+                
                 <h3 className="layout" style={{'height':'800px','lineHeight':'800px'}}>React + Redux + Antd + Webpack</h3>
             </MainSection>
         );
