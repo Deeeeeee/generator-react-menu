@@ -29,12 +29,12 @@ export default class Header extends React.Component {
     }
 
     render() {
-        const { home, currentNav} = this.props;
+        const { home } = this.props;
         return (
             <div className="header">
                 <div className="layout">
                     <Link to="/" className="logo">
-                        <img src={ logo } alt=""/> react-menu
+                        <img src={ logo } alt=""/> generator-react-menu
                     </Link>
                     <a href="https://github.com/Deeeeeee/generator-react-menu" className="github">Github</a>
                 </div>

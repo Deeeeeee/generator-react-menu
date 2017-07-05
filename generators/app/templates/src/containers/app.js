@@ -9,7 +9,6 @@ import * as actions from '../actions';
 import './_common_less/index.less';
 import './_common_sass/base.scss';
 
-
 class App extends React.Component {
 
     constructor(props) {
@@ -41,9 +40,10 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
     return {
+        routing: state.routing,
+        //
         home: state.home,
-        user: state.user,
-        routing: state.routing
+        user: state.user
     }
 }
 
