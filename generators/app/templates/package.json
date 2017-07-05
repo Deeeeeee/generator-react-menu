@@ -1,7 +1,9 @@
 {
-  "name": "",
+  "name": "<%= appname %>",
+  "author": "<%= author %>",
   "version": "1.0.0",
   "description": "",
+  "license": "",
   "repository": {
     "type": "git",
     "url": ""
@@ -11,8 +13,6 @@
     "build-test": "webpack --config webpack.test.conf.js",
     "build-pro": "webpack --config webpack.pro.conf.js"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
     "babel-core": "^6.9.1",

@@ -1,88 +1,118 @@
-var path = require('path');
-var chalk = require('chalk');
-var util = require('util');
+'use strict';
+const Generator = require('yeoman-generator');
+const chalk = require('chalk');
+const yosay = require('yosay');
+const path = require('path');
 
-var yeoman = require('yeoman-generator');
-var yosay = require('yosay');
-var path = require('path');
-
-
-var Reactpackage = yeoman.Base.extend({
-    info: function() {
-        this.log(chalk.green(
-            'building...'
-        ));
-    },
-    generateBasic: function() {
-        this.directory('src', 'src');
-        this.copy('package.json', 'package.json');
-        this.copy('index.html', 'index.html');
-        this.copy('index-template-pro.html', 'index-template-pro.html');
-        this.copy('index-template-test.html', 'index-template-test.html');
-        this.copy('README.md', 'README.md');
-        this.copy('server.js', 'server.js');
-        this.copy('webpack.config.js', 'webpack.config.js');
-        this.copy('webpack.test.conf.js', 'webpack.test.conf.js');
-        this.copy('webpack.pro.conf.js', 'webpack.pro.conf.js');
-    },
-    generateClient: function() {
-        this.sourceRoot(path.join(__dirname, 'templates'));
-        this.destinationPath('./');
-    },
-    install: function() {
-        this.installDependencies({
-            skipInstall: this.options['skip-install']
+module.exports = class extends Generator {
+    constructor(args, opts) {
+        super(args, opts);
+        this.option('run-install', {
+          desc: 'run npm install after bulit',
+          type: Boolean
         });
-    },
-    end: function() {
-        this.log(yosay(
-            'Your app has been created successfully!'
-        ));
     }
-});
 
-module.exports = Reactpackage;
+    initializing() { 
+        this.pkg = require('../../package.json');
+    }
 
+    prompting() {  
+        this.log(yosay('Welcome to the groundbreaking ' + chalk.red('example') + ' generator!' ));
+        const prompts = [
+            {
+                type: 'input',
+                name: 'appname',
+                message: 'Name of app:', 
+                default: 'react-menu'
+            },
+            {
+                type: 'input',
+                name: 'author',
+                message: 'Author:', 
+                default: 'jondi'
+            },
+            {
+                type: 'list',
+                name: 'isMobile',
+                message: 'Type of project',
+                choices: [{
+                    name: 'PC',
+                    value: false
+                }, {
+                    name: 'H5',
+                    value: true
+                }],
+            }
+        ];
+        return this.prompt(prompts).then(props => {  
+            this.appname = props.appname;
+            this.author = props.author;
+            this.isMobile = props.isMobile;
+        });
+    }
 
+    writing () {
+        this._writingPackageJSON(); 
+        this._writingSrc();
+        this._writingHtml();
+        this._writingReadme();
+        this._writingWebpackConfig();
+    }
 
+     _writingPackageJSON() {
+        this.fs.copyTpl(
+            this.templatePath('package.json'),
+            this.destinationPath('package.json'),
+            {
+                appname: this.appname,
+                author: this.author
+            }
+        );
+    }
 
+    _writingHtml(){
+        this.fs.copyTpl(
+          this.templatePath('index.html'),
+          this.destinationPath('index.html'),
+          {
+              isMobile: this.isMobile
+          }
+        );
+    }
 
-// prompting: function() {
-//     var done = this.async();
-//     this.log(
-//         chalk.green('I am going to build your app!')
-//     );
-//     var prompts = [
-//         {
-//             type: 'input',
-//             name: 'name',
-//             message: 'name of app:',
-//             default: 'tempate'
-//         },
-//         {
-//             type: 'input',
-//             name: 'description',
-//             message: 'description:',
-//             default: 'app description'
-//         },
-//         {
-//             type: 'input',
-//             name: 'license',
-//             message: 'license:',
-//             default: 'MIT'
-//         },
-//         {
-//             type: 'input',
-//             name: 'author',
-//             message: 'author:',
-//             default: ''
-//         }
-//     ];
-//     this.prompt(prompts, function (props) {
-//         this.appName = props.name;
-//         this.description = props.description;
-//         this.author = props.author;
-//         this.license = props.license;
-//         done();  //进入下一个生命周期阶段
-//     }.bind(this));
-// }
+    _writingSrc() {
+        this.fs.copy(
+          this.templatePath('src'),
+          this.destinationPath('src')
+        );
+    }
+
+    _writingReadme(){
+        this.fs.copy(
+          this.templatePath('README.md'),
+          this.destinationPath('README.md')
+        );
+    }
+
+    _writingWebpackConfig(){
+        this.fs.copy(
+          this.templatePath('webpack.config.js'),
+          this.destinationPath('webpack.config.js')
+        );
+    }
+
+    _writingServer(){
+        this.fs.copy(
+          this.templatePath('server.js'),
+          this.destinationPath('server.js')
+        );
+    }
+
+    install () {
+        
+    }
+    end () {
+       
+    }
+};
