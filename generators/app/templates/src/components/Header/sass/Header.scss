@@ -6,19 +6,26 @@
     position: relative;
     height: $topBarHeight;
     line-height: $topBarHeight;
-    background-color: #efefef;
-    border-bottom: 1px solid $base-border-color;
+    background-color: #222;
     z-index: 1;
-    .layout{
-        position: relative;
-        @extend .clearfix;
-        h1{
-            position: absolute;
-            left: 0;
-            top: 0;
+    padding: 0 10px;
+    font-family: proxima-nova,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+    @extend .clearfix;
+    .logo{
+        float: left;
+        color: #00d8ff;
+        font-size: 20px;
+        img{
+            width: 45px;
+            vertical-align: middle;
         }
-        a:hover{
-            color: $text-yellow;
+    }
+    .github{
+        float: right;
+        color: #ddd;
+        font-size: 18px;
+        &:hover{
+            color: #eee;
         }
     }
 }

@@ -30,7 +30,7 @@ export default class MainSection extends React.Component {
                     this.props.children
                 }
                 {/*<BackTop />*/}
-                <Footer />
+                {/*<Footer />*/}
             </div>
         )
     }

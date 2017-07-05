@@ -7,7 +7,7 @@ html, body {
 }
 
 .layout {
-    width: $layoutWidth;
+    max-width: $layoutWidth;
     margin: 0 auto;
     @extend .clearFix;
 }

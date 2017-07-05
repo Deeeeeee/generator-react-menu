@@ -32,16 +32,12 @@ export default class Header extends React.Component {
         const { home, currentNav} = this.props;
         return (
             <div className="header">
-                    <div className="layout ">
-                        <h1>
-                            <Link to="/">
-                                {/*<img src={ logo } alt=""/>*/}
-                                logo
-                            </Link>
-                        </h1>
-                        
-                    </div>
-               
+                <div className="layout">
+                    <Link to="/" className="logo">
+                        <img src={ logo } alt=""/> generator-react-menu
+                    </Link>
+                    <a href="https://github.com/Deeeeeee/generator-react-menu" className="github">Github</a>
+                </div>
             </div>
         )
     }

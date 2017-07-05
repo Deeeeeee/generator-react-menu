@@ -54,10 +54,19 @@ module.exports = class extends Generator {
 
     writing () {
         this._writingPackageJSON(); 
-        this._writingSrc();
+
         this._writingHtml();
+        this._writingHtmlTest();
+        this._writingHtmlPro();
+
+        this._writingWebpack();
+        this._writingWebpackTest();
+        this._writingWebpackPro();
+
+        this._writingSrc();
         this._writingReadme();
-        this._writingWebpackConfig();
+        this._writingServer();
+        
     }
 
      _writingPackageJSON() {
@@ -80,6 +89,24 @@ module.exports = class extends Generator {
           }
         );
     }
+    _writingHtmlTest(){
+        this.fs.copyTpl(
+          this.templatePath('index-template-test.html'),
+          this.destinationPath('index-template-test.html'),
+          {
+              isMobile: this.isMobile
+          }
+        );
+    }
+    _writingHtmlPro(){
+        this.fs.copyTpl(
+          this.templatePath('index-template-pro.html'),
+          this.destinationPath('index-template-pro.html'),
+          {
+              isMobile: this.isMobile
+          }
+        );
+    }
 
     _writingSrc() {
         this.fs.copy(
@@ -95,10 +122,22 @@ module.exports = class extends Generator {
         );
     }
 
-    _writingWebpackConfig(){
+    _writingWebpack(){
         this.fs.copy(
           this.templatePath('webpack.config.js'),
           this.destinationPath('webpack.config.js')
+        );
+    }
+    _writingWebpackTest(){
+        this.fs.copy(
+          this.templatePath('webpack.test.conf.js'),
+          this.destinationPath('webpack.test.conf.js')
+        );
+    }
+    _writingWebpackPro(){
+        this.fs.copy(
+          this.templatePath('webpack.pro.conf.js'),
+          this.destinationPath('webpack.pro.conf.js')
         );
     }
 
