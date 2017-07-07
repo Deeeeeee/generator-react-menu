@@ -3,6 +3,7 @@
     box-sizing: border-box;
 }
 .home-page{
+    font-family: proxima-nova,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
     .wall{
         height: 300px;
         padding-top: 80px;
@@ -24,7 +25,24 @@
             float: left;
             width: 33.33%;
             padding: 10px;
-
+            h5{
+                margin-bottom: 20px;
+                font-size: 20px;
+                font-weight: 700;
+            }
+            p{
+                margin-top: 5px;
+                font-size: 16px;
+            }
+            code{
+                font-family: proxima-nova,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+                color: #666;
+                em{
+                    color: #999;
+                    font-size: 12px;
+                    margin-left: 10px;
+                }
+            }
         }
     }
 

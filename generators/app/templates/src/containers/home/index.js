@@ -30,16 +30,22 @@ class Home extends React.Component {
                     </div>
                     <div className="info layout">
                         <div className="panel">
-                            <h5>info1</h5>
-                            <code>
-                                // 代码1
-                            </code>
+                            <h5>命令</h5>
+                                <p>运行命令：</p>
+                                <code>node server.js</code>
+                                <p>打包命令：</p>
+                                <code>
+                                    npm run build-test <em>// 构建测试环境代码 </em>
+                                    <br />
+                                    npm run build-pro <em>// 构建开发环境代码 </em>
+                                </code>
                         </div>
                         <div className="panel">
-                            <h5>info2</h5>
-                            <code>
-                                // 代码2
-                            </code>
+                            <h5>配置</h5>
+                            <p>代理：</p>
+                            <code>/server.js </code>
+                            <p>日志：</p>
+                            <code>src/store/configureStore.js</code>
                         </div>
                         <div className="panel">
                             <h5>info3</h5>
