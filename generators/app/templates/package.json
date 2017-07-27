@@ -10,6 +10,7 @@
   },
   "main": "index.js",
   "scripts": {
+    "dev": "node server.js",
     "build-test": "webpack --config webpack.test.conf.js",
     "build-pro": "webpack --config webpack.pro.conf.js"
   },
