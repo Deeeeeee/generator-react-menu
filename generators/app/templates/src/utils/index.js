@@ -2,6 +2,17 @@ require('es6-promise').polyfill();
 require('isomorphic-fetch');
 import config from '../config';
 
+// 为fetch添加超时
+let oldFetch = fetch; //拦截原始的fetch方法
+window.fetch = function(input, opts){//定义新的fetch方法，封装原有的fetch方法
+    var fetchPromise = oldFetch(input, opts);
+    var timeoutPromise = new Promise(function(resolve, reject){
+        setTimeout(()=>{
+            reject(new Error("fetch timeout"))
+        }, 1000)
+    });
+    return Promise.race([fetchPromise, timeoutPromise])
+};
 // function ajaxGet(url) {
 //     return new Promise(function (resolve, reject) {
 //         var xhr = new XMLHttpRequest();
@@ -31,6 +42,7 @@ import config from '../config';
 //         throw err;
 //     });
 // }
+
 export function get(url, data) {
     var request = '';
     if (data) {
@@ -40,7 +52,7 @@ export function get(url, data) {
     }
     return fetch(config.SERVICE_URL + url + '.do?' + request, {
         method: 'GET',
-        credentials: 'include',
+        credentials: 'include', // omit: 默认值，忽略cookie的发送 same-origin: cookie只能同域发送 include: cookie既可以同域发送，也可以跨域发送
     }).then((res)=> {
             if (res.ok) {
                 return res.json()
@@ -52,6 +64,7 @@ export function get(url, data) {
         throw err;
     })
 }
+
 export function post(url, data) {
     var request;
     var headers = new Headers();
@@ -76,6 +89,16 @@ export function post(url, data) {
     })
 }
 
+// export function onEnter(nextState, replace) {
+//     var token = Cookies.get('CW_COOKIE_TOKEN');
+//     if (!token) {
+//         if (isCWBrowser())  {
+//             replace('/login');
+//         } else {
+//             replace('/welcome');
+//         }
+//     }
+// }
 
 export function formatDate(timeStamp, hourFlag = false, joiner = '-') {
     var time = new Date(timeStamp),
@@ -118,12 +141,6 @@ export function divideNum(num1, num2) {
     return (num1 / num2 * 100).toFixed();
 }
 
-/**
- * 截取字符串并添加省略号
- *
- * @param str {string} 字符串
- * @param length {int} 截取长度
- */
 export function strEllipsis(str, length) {
     return str.length > length ? str.substring(0, length) + "..." : str
 }
@@ -267,14 +284,3 @@ export function isLocalStorageSupported() {
     }
 }
 
-export function checkAndroidPackName(packname) {
-    window.provideCheckAppResult = json => {
-        try {
-            var response = JSON.parse(json);
-            console.log(response);
-        } catch (e) {
-            console.log(e);
-        }
-    };
-    window.CaiwaApi.checkApp(packname);
-}

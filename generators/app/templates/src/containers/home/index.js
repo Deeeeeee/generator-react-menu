@@ -19,9 +19,9 @@ class Home extends React.Component {
     }
 
     render() {
-        const {actions, home } = this.props;
+        const {actions, user } = this.props;
         return (
-            <MainSection actions={actions} home={home} className="home-page">
+            <MainSection actions={actions} user={user} className="home-page">
                     <div className="wall">
                         <div className="layout">
                             <h5>generator-react-menu</h5>
