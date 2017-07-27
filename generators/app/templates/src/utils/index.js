@@ -50,7 +50,7 @@ export function get(url, data) {
             request += (k + "=" + data[k] + "&");
         }
     }
-    return fetch(config.SERVICE_URL + url + '.do?' + request, {
+    return fetch(config.SERVICE_URL + url + '?' + request, {
         method: 'GET',
         credentials: 'include', // omit: 默认值，忽略cookie的发送 same-origin: cookie只能同域发送 include: cookie既可以同域发送，也可以跨域发送
     }).then((res)=> {

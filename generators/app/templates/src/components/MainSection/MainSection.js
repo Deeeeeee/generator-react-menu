@@ -22,10 +22,10 @@ export default class MainSection extends React.Component {
     }
 
     render() {
-        const {actions, user} = this.props;
+        const {actions, user, home} = this.props;
         return (
             <div id="mainSection" className={this.props.className}>
-                <Header actions={ actions } user={ user } />
+                <Header actions={ actions } user={ user } home={home}/>
                 {
                     this.props.children
                 }

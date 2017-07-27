@@ -22,3 +22,24 @@ export function getBannerList(data) {
 }
 
 
+/**
+ * 获取天气
+ * @return
+ * */
+export function fetchWeather(city) {
+    let data={
+        city: city
+    };
+    return (dispatch) => {
+        return get('/api/weather_mini', data).then(
+            response => dispatch({
+                type: types.FETCH_WEATHER,
+                weather: response.data
+            }),
+            error => dispatch({
+                type: types.FETCH_WEATHER_FAILED,
+                error
+            })
+        )
+    }
+}

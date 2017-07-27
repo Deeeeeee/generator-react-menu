@@ -9,16 +9,20 @@ var proxy = require('http-proxy-middleware');
 var port = 3000;
 var app = express();
 var compiler = webpack(config);
-
+const proxyOpts = proxy('/api',{
+    target: 'http://wthrcdn.etouch.cn',
+    changeOrigin: true,
+    ws: true,
+    pathRewrite: {
+        '^/api': ''
+    },
+    router: {
+        'http://wthrcdn.etouch.cn': 'http://localhost:3000'
+    }
+});
 app.use(express.static(path.join(__dirname, 'src')));
 
-app.use(
-    '/service-core/web',
-    proxy('/',{
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        ws: true,
-    }));
+app.use('/api', proxyOpts);
 
 app.use(webpackDevMiddleware(compiler, {
     noInfo: true,

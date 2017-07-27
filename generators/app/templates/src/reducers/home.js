@@ -2,15 +2,16 @@ import * as types  from '../constants/homeTypes';
 import { getItem } from '../utils';
 
 const initialObject = {
-    bannerList: []
+    bannerList: [],
+    weather: {}
 };
 const initialState = getItem('home') || initialObject;
 export default function home(state = initialState, action) {
     switch (action.type) {
-        case types.FETCH_BANNER_LIST:
+        case types.FETCH_WEATHER:
             return {
                 ...state,
-                bannerList: action.bannerList
+                weather: action.weather
             };
         default:
             return state;

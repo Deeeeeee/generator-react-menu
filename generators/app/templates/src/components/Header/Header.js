@@ -20,6 +20,7 @@ export default class Header extends React.Component {
 
     componentDidMount() {
         const {actions} = this.props;
+        actions.fetchWeather('杭州');
         // actions.getUserInfo();
     }
 
@@ -37,6 +38,7 @@ export default class Header extends React.Component {
                         <img src={ logo } alt=""/> generator-react-menu
                     </Link>
                     <a href="https://github.com/Deeeeeee/generator-react-menu" className="github">Github</a>
+                    <a href="javscript:;" className="wendu">{'气温：'+home.weather.wendu+ '℃'}</a>
                 </div>
             </div>
         )
