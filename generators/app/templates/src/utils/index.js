@@ -8,8 +8,8 @@ window.fetch = function(input, opts){//定义新的fetch方法，封装原有的
     var fetchPromise = oldFetch(input, opts);
     var timeoutPromise = new Promise(function(resolve, reject){
         setTimeout(()=>{
-            reject(new Error("fetch timeout"))
-        }, 1000)
+            reject(new Error("请求超时"))
+        }, 10000)
     });
     return Promise.race([fetchPromise, timeoutPromise])
 };
