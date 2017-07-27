@@ -39,5 +39,5 @@
     2. 去除运行 warning
     3. 增加生成 page & component 的命令
     4. 完善登录拦截 onEnter
-    5. 
+    5.
 
