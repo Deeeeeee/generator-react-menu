@@ -30,7 +30,7 @@ module.exports = class extends Generator {
                 type: 'input',
                 name: 'author',
                 message: 'Author:', 
-                default: 'jondi'
+                default: 'VinSmoke'
             },
             {
                 type: 'list',
@@ -40,7 +40,7 @@ module.exports = class extends Generator {
                     name: 'PC',
                     value: false
                 }, {
-                    name: 'H5',
+                    name: 'Mobile',
                     value: true
                 }],
             }
@@ -49,6 +49,7 @@ module.exports = class extends Generator {
             this.appname = props.appname;
             this.author = props.author;
             this.isMobile = props.isMobile;
+            this.fileSrc = props.isMobile ? 'mobile/' : 'pc/'
         });
     }
 
@@ -71,7 +72,7 @@ module.exports = class extends Generator {
 
      _writingPackageJSON() {
         this.fs.copyTpl(
-            this.templatePath('package.json'),
+            this.templatePath(this.fileSrc + 'package.json'),
             this.destinationPath('package.json'),
             {
                 appname: this.appname,
@@ -82,7 +83,7 @@ module.exports = class extends Generator {
 
     _writingHtml(){
         this.fs.copyTpl(
-          this.templatePath('index.html'),
+          this.templatePath(this.fileSrc + 'index.html'),
           this.destinationPath('index.html'),
           {
               isMobile: this.isMobile
@@ -91,7 +92,7 @@ module.exports = class extends Generator {
     }
     _writingHtmlTest(){
         this.fs.copyTpl(
-          this.templatePath('index-template-test.html'),
+          this.templatePath(this.fileSrc + 'index-template-test.html'),
           this.destinationPath('index-template-test.html'),
           {
               isMobile: this.isMobile
@@ -100,7 +101,7 @@ module.exports = class extends Generator {
     }
     _writingHtmlPro(){
         this.fs.copyTpl(
-          this.templatePath('index-template-pro.html'),
+          this.templatePath(this.fileSrc + 'index-template-pro.html'),
           this.destinationPath('index-template-pro.html'),
           {
               isMobile: this.isMobile
@@ -110,40 +111,40 @@ module.exports = class extends Generator {
 
     _writingSrc() {
         this.fs.copy(
-          this.templatePath('src'),
+          this.templatePath(this.fileSrc + 'src'),
           this.destinationPath('src')
         );
     }
 
     _writingReadme(){
         this.fs.copy(
-          this.templatePath('README.md'),
+          this.templatePath(this.fileSrc + 'README.md'),
           this.destinationPath('README.md')
         );
     }
 
     _writingWebpack(){
         this.fs.copy(
-          this.templatePath('webpack.config.js'),
+          this.templatePath(this.fileSrc + 'webpack.config.js'),
           this.destinationPath('webpack.config.js')
         );
     }
     _writingWebpackTest(){
         this.fs.copy(
-          this.templatePath('webpack.test.conf.js'),
+          this.templatePath(this.fileSrc + 'webpack.test.conf.js'),
           this.destinationPath('webpack.test.conf.js')
         );
     }
     _writingWebpackPro(){
         this.fs.copy(
-          this.templatePath('webpack.pro.conf.js'),
+          this.templatePath(this.fileSrc + 'webpack.pro.conf.js'),
           this.destinationPath('webpack.pro.conf.js')
         );
     }
 
     _writingServer(){
         this.fs.copy(
-          this.templatePath('server.js'),
+          this.templatePath(this.fileSrc + 'server.js'),
           this.destinationPath('server.js')
         );
     }

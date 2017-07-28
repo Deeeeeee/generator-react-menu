@@ -1,0 +1,48 @@
+// ------ Base & Require ------
+$body-background        : #fff;
+$grayBg                 : #f4f4f4;
+
+$font-family            : "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+$code-family            : Consolas,Menlo,Courier,monospace;
+$text-color-white       : #fff;
+$font-size-base         : 12px;
+$line-height-base       : 1.5;
+$line-height-computed   : floor(($font-size-base * $line-height-base));
+$border-radius-base     : 6px;
+$border-radius-sm       : 4px;
+
+$reward-background-color: #f9f9f9;
+$dash-border-color      : #cccccc;
+$solid-border-color     : #ebf0f1;
+$default-color          : #bfbfbf;
+$main-color             : #ff5747;
+$sub-main-color         : #ff8b5c;
+$sub-main-color-2       : #f67475;
+$primary-color          : #007aff;
+$sub-primary-color      : #49c2fa;
+$sub-primary-color2     : #55abed;
+$warning-color          : #fa882b;
+$success-color          : #5cc689;
+
+
+
+
+$base-border-color      : #dcdcdc;
+
+$text-color-2           : #222;
+$text-color-3           : #333;
+$text-color-6           : #666;
+$text-color-9           : #999;
+$text-red               : #c9151e;
+$text-yellow            : #f5a728;
+
+
+
+
+// size
+$layoutWidth            : 1190px;
+$topBarHeight           : 60px;
+$headerHeight           : 100px;
+$navHeight              : 65px;
+$bannerHeight           : 400px;
+$footerHeight           : 180px;

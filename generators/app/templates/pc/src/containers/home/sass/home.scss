@@ -1,0 +1,49 @@
+@import "../../_common_sass/mixin", "../../_common_sass/variables";
+*{
+    box-sizing: border-box;
+}
+.home-page{
+    font-family: proxima-nova,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+    .wall{
+        height: 300px;
+        padding-top: 80px;
+        background-color: #2d2d2d;
+        text-align: center;
+        h5{
+            margin-bottom: 20px;
+            font-size: 40px;
+            color: #00d8ff;
+        }
+        p{
+            font-size: 14px;
+            color: #ababab;
+        }
+    }
+    .info{
+        margin-top: 30px;
+        .panel{
+            float: left;
+            width: 33.33%;
+            padding: 10px;
+            h5{
+                margin-bottom: 20px;
+                font-size: 20px;
+                font-weight: 700;
+            }
+            p{
+                margin-top: 5px;
+                font-size: 16px;
+            }
+            code{
+                font-family: proxima-nova,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+                color: #666;
+                em{
+                    color: #999;
+                    font-size: 12px;
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+
+}

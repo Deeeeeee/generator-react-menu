@@ -1,0 +1,39 @@
+@import
+"../../../containers/_common_sass/mixin",
+"../../../containers/_common_sass/variables";
+
+.header{
+    position: relative;
+    height: $topBarHeight;
+    line-height: $topBarHeight;
+    background-color: #222;
+    z-index: 1;
+    padding: 0 10px;
+    @extend .clearfix;
+    .logo{
+        float: left;
+        color: #00d8ff;
+        font-size: 20px;
+        img{
+            width: 45px;
+            vertical-align: middle;
+        }
+    }
+    .github{
+        float: right;
+        color: #ddd;
+        font-size: 18px;
+        &:hover{
+            color: #eee;
+        }
+    }
+    .wendu{
+        margin: 0 30px;
+        float: right;
+        color: #ddd;
+        font-size: 16px;
+        &:hover{
+            color: #eee;
+        }
+    }
+}

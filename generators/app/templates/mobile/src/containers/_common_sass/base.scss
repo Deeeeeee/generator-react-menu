@@ -1,0 +1,203 @@
+@import "./mixin", "./variables", "./reset";
+@charset "UTF-8";
+html, body{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling : touch;
+}
+body{
+    background-color: #f6f6f6;
+}
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #989ea0; }
+
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #989ea0; }
+
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #989ea0; }
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #989ea0; }
+#app, #Image {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    background-color: white;
+    &>section{
+        position: absolute;
+        top: 44px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        transition: all, .3s;
+        .inner-wrapper{
+            padding-bottom: 50px;
+        }
+    }
+}
+#Image.gray-bg{
+    background-color: $body-background;
+}
+
+.push-enter {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+
+    transition-property: transform;
+    transition-duration: .3s;
+    transition-timing-function: ease-out;
+    z-index:1 !important;
+}
+
+.push-enter.push-enter-active {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    z-index:1 !important;
+}
+
+.push-leave {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+
+    transition-property: transform;
+    transition-duration: .3s;
+    transition-timing-function: ease-out;
+    z-index:0 !important;
+    #header h2 {
+
+        transition-property: opacity;
+        transition-duration: .3s;
+        transition-timing-function: ease-out;
+        opacity: 0;
+    }
+}
+
+.push-leave.push-leave-active {
+    -webkit-transform: translate3d(-30%, 0, 0);
+    transform: translate3d(-30%, 0, 0);
+    z-index:0 !important;
+    #header h2 {
+        transition-property: opacity;
+        transition-duration: .3s;
+        transition-timing-function: ease-out;
+        opacity: 0;
+    }
+}
+
+
+.pop-enter {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+
+    transition-property: transform;
+    transition-duration: .3s;
+    transition-timing-function: ease-out;
+    z-index:0 !important;
+}
+
+.pop-enter.pop-enter-active {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    z-index:0 !important;
+}
+
+.pop-leave {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+
+    transition-property: transform;
+    transition-duration: .3s;
+    transition-timing-function: ease-out;
+    z-index:1 !important;
+    #header h2 {
+
+        transition-property: opacity;
+        transition-duration: .3s;
+        transition-timing-function: ease-out;
+        opacity: 0;
+    }
+}
+
+.pop-leave.pop-leave-active {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    z-index:1 !important;
+    #header h2 {
+
+        transition-property: opacity;
+        transition-duration: .3s;
+        transition-timing-function: ease-out;
+        opacity: 0;
+    }
+}
+
+.link-active {
+    color: #bbbbbb;
+    text-decoration: none;
+}
+
+.skylight-overlay {
+    transition: all .3s;
+    -webkit-animation: .3s skyLightFadeIn;
+    animation: .3s skyLightFadeIn;
+}
+.skylight-dialog {
+    transition: all .3s;
+    -webkit-animation: .3s skyLightSlideInDown;
+    animation: .3s skyLightSlideInDown;
+}
+
+@-webkit-keyframes skyLightSlideInDown {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100px, 0);
+        transform: translate3d(0, -100px, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+@keyframes skyLightSlideInDown {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100px, 0);
+        transform: translate3d(0, -100px, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+@-webkit-keyframes skyLightFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes skyLightFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+

@@ -1,0 +1,31 @@
+@import "../../_common_sass/mixin", "../../_common_sass/variables";
+$bigImgHeight   : 500px;
+$bigImgWidth    : 300px;
+$smImgHeight    : 160px;
+$smImgWidth     : 280px;
+
+.case-detail-page{
+    .banner{
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        max-height: 500px;
+    }
+    .case-title{
+        margin-top: 30px;
+        text-align: center;
+        color: $text-red;
+        font-size: 30px;
+        line-height: 60px;
+        span{
+            display: inline-block;
+            border-bottom: 1px solid $base-border-color;
+            padding: 0 50px;
+        }
+    }
+    .case-content{
+        margin: 30px auto;
+        min-height: 500px;
+
+    }
+}
