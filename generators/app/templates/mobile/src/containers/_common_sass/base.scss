@@ -26,31 +26,6 @@ body{
 :-ms-input-placeholder {
   /* Internet Explorer 10+ */
   color: #989ea0; }
-#app, #Image {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    left: 0;
-    bottom: 0;
-    overflow: hidden;
-    background-color: white;
-    &>section{
-        position: absolute;
-        top: 44px;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        overflow-x: hidden;
-        overflow-y: auto;
-        transition: all, .3s;
-        .inner-wrapper{
-            padding-bottom: 50px;
-        }
-    }
-}
-#Image.gray-bg{
-    background-color: $body-background;
-}
 
 .push-enter {
     -webkit-transform: translate3d(100%, 0, 0);

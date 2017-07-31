@@ -23,19 +23,6 @@ $prefix-for-spec: true !default; // required for keyframe mixin
 	padding: $padding;
     background: $backgroundColor;
 	cursor: pointer;
-    //
-	//@if $backgroundColor == #23c8bc {
-	//	&:hover{
-	//		background-color: #1db6ab;
-	//	}
-	//}
-    //
-	//@if $backgroundColor == #3f4343 {
-	//	&:hover{
-	//		background-color: #292e2e;
-	//	}
-	//}
-
 }
 
 @mixin lineGradientBg($rotate,$from,$to){
@@ -298,6 +285,6 @@ $prefix-for-spec: true !default; // required for keyframe mixin
 }
 
 @function px2rem($px){
-    $rem : 37.5px;
-    @return ($px/$rem) + rem;
+	$rem : 50px;
+	@return ($px/2/$rem) + rem;
 }

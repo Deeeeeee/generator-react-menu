@@ -4,8 +4,8 @@
 
 .header{
     position: relative;
-    height: $topBarHeight;
-    line-height: $topBarHeight;
+    height: px2rem($topBarHeight);
+    line-height: px2rem($topBarHeight);
     background-color: #222;
     z-index: 1;
     padding: 0 10px;
@@ -13,25 +13,25 @@
     .logo{
         float: left;
         color: #00d8ff;
-        font-size: 20px;
+        font-size: px2rem(30px);
         img{
-            width: 45px;
+            width: px2rem(60px);
             vertical-align: middle;
         }
     }
     .github{
         float: right;
         color: #ddd;
-        font-size: 18px;
+        font-size: px2rem(30px);
         &:hover{
             color: #eee;
         }
     }
     .wendu{
-        margin: 0 30px;
+        margin: 0 px2rem(30px);
         float: right;
         color: #ddd;
-        font-size: 16px;
+        font-size: px2rem(26px);
         &:hover{
             color: #eee;
         }

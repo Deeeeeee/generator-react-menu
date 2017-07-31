@@ -23,10 +23,8 @@ class Home extends React.Component {
         return (
             <MainSection actions={actions} user={user} home={home} className="home-page">
                     <div className="wall">
-                        <div className="layout">
-                            <h5>generator-react-menu</h5>
-                            <p>基于 React Redux Webpack 的项目脚手架</p>
-                        </div>
+                        <h5>generator-react-menu</h5>
+                        <p>基于 React Redux Webpack 的项目脚手架</p>
                     </div>
                     <div className="info layout">
                         <div className="panel">
