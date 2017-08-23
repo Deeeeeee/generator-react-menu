@@ -6,7 +6,7 @@ import * as actions from '../actions';
 /**
  * 加载公共样式文件
  * */
-import './_common_less/index.less';
+// import './_common_less/index.less';
 import './_common_sass/reset.scss';
 import './_common_sass/base.scss';
 

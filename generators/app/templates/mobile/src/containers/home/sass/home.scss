@@ -5,17 +5,17 @@
 .home-page{
     font-family: proxima-nova,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
     .wall{
-        height: px2rem(350px);
-        padding-top: px2rem(80px);
+        height: 350px;
+        padding-top: 80px;
         background-color: #2d2d2d;
         text-align: center;
         h5{
             margin-bottom: 20px;
-            font-size: px2rem(45px);
+            font-size: 45px;
             color: #00d8ff;
         }
         p{
-            font-size: px2rem(20px);
+            font-size: 20px;
             color: #ababab;
         }
     }
@@ -25,25 +25,25 @@
             padding: 10px;
             h5{
                 margin-bottom: 20px;
-                font-size: px2rem(30px);
+                font-size: 30px;
                 font-weight: 700;
             }
             p{
                 margin-top: 5px;
-                font-size: px2rem(24px);
+                font-size: 24px;
             }
             code{
                 display: block;
-                padding: px2rem(10px) px2rem(30px);
+                padding: 10px 30px;
                 background-color: $grayBg;
                 border: 1px solid #aaa;
                 border-radius: 4px;
                 font-family: proxima-nova,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
                 color: #666;
-                font-size: px2rem(14px);
+                font-size: 14px;
                 em{
                     color: #999;
-                    font-size: px2rem(14px);
+                    font-size: 14px;
                     margin-left: 10px;
                 }
             }
