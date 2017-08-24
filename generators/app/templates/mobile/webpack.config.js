@@ -13,6 +13,17 @@ module.exports = {
     entry: entry,
     module: {
         rules: [
+
+            {
+                test: /\.js?$/,
+                enforce: 'pre',
+                exclude: /node_modules/,
+                include: path.resolve(__dirname, './src/**/*.js'),
+                use: [{
+                    loader: 'eslint-loader',
+                    options: {fix: true}
+                }]
+            },
             {
                 test: /\.svg$/,
                 loader: 'svg-sprite-loader',

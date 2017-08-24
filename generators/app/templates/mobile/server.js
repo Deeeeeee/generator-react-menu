@@ -6,7 +6,7 @@ var webpackDevMiddleware = require('webpack-dev-middleware');
 var webpackHotMiddleware = require('webpack-hot-middleware');
 var proxy = require('http-proxy-middleware');
 
-var port = 3000;
+var port = 3001;
 var app = express();
 var compiler = webpack(config);
 const proxyOpts = proxy('/api',{

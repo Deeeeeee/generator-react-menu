@@ -10,10 +10,14 @@
   },
   "main": "index.js",
   "scripts": {
+    "lint": "eslint --ext .js src",
     "dev": "node server.js",
     "build-test": "webpack --config webpack.test.conf.js",
     "build-pro": "webpack --config webpack.pro.conf.js"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
     "babel-core": "^6.9.1",
@@ -30,6 +34,9 @@
     "babel-preset-stage-0": "^6.5.0",
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.23.1",
+    "eslint": "^4.5.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-react": "^7.3.0",
     "express": "^4.13.4",
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.28.0",
@@ -40,6 +47,7 @@
     "node-sass": "^3.7.0",
     "postcss-loader": "^2.0.6",
     "postcss-pxtorem": "^4.0.1",
+    "pre-commit": "^1.2.2",
     "raw-loader": "^0.5.1",
     "redux-devtools": "^3.3.2",
     "redux-devtools-dock-monitor": "^1.1.1",
