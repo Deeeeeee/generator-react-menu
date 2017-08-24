@@ -31,14 +31,16 @@ class Cases extends React.Component {
         //     })
         // );
     }
+
     componentWillUnmount() {
-       
+
     }
+
     render() {
         const {actions, home, user} = this.props;
         return (
-            <MainSection actions={actions} home={home} user={user} currentNav={[3,-1]} className="case-detail-page">
-                
+            <MainSection actions={actions} home={home} user={user} currentNav={[3, -1]} className="case-detail-page">
+
             </MainSection>
         );
     }

@@ -9,8 +9,6 @@ import Footer from '../../components/Footer/Footer';
 /**
  * 加载图片或样式文件
  * */
-// import 'antd/lib/back-top/style/index.less';
-
 
 export default class MainSection extends React.Component {
     constructor(props) {
@@ -18,7 +16,7 @@ export default class MainSection extends React.Component {
     }
 
     componentWillUnmount() {
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
     }
 
     render() {
@@ -29,8 +27,6 @@ export default class MainSection extends React.Component {
                 {
                     this.props.children
                 }
-                {/*<BackTop />*/}
-                {/*<Footer />*/}
             </div>
         )
     }

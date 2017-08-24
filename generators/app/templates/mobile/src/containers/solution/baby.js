@@ -21,13 +21,13 @@ import img4 from './images/baby/4.jpg';
 class ECommerce extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-        };
+        this.state = {};
     }
+
     render() {
-        const {actions, home, user } = this.props;
+        const {actions, home, user} = this.props;
         return (
-            <MainSection actions={actions} home={home} user={user} currentNav={[2,6]} className="baby-page">
+            <MainSection actions={actions} home={home} user={user} currentNav={[2, 6]} className="baby-page">
                 <BannerStatic url={banner}/>
                 <div className="panel">
                     <HomeSubTitle mainTitle="母婴行业*困境*" subTitle=""/>

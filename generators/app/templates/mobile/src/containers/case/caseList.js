@@ -43,7 +43,7 @@ class CaseList extends React.Component {
     render() {
         const {actions, home, user} = this.props;
         return (
-            <MainSection actions={actions} home={home} user={user}  currentNav={[3,-1]} className="case-page">
+            <MainSection actions={actions} home={home} user={user} currentNav={[3, -1]} className="case-page">
                 <HomeSubTitle mainTitle="精选*案例*" subTitle="10年沉淀 6年社会化媒体营销实战 40万成功传播案例 帮助客户拥抱变化"/>
                 <div className="case-nav layout">
                     {

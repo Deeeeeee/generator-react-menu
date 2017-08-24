@@ -4,10 +4,10 @@ import config from '../config';
 
 // 为fetch添加超时
 let oldFetch = fetch; //拦截原始的fetch方法
-window.fetch = function(input, opts){//定义新的fetch方法，封装原有的fetch方法
+window.fetch = function (input, opts) {//定义新的fetch方法，封装原有的fetch方法
     var fetchPromise = oldFetch(input, opts);
-    var timeoutPromise = new Promise(function(resolve, reject){
-        setTimeout(()=>{
+    var timeoutPromise = new Promise(function (resolve, reject) {
+        setTimeout(()=> {
             reject(new Error("请求超时"))
         }, 10000)
     });
@@ -19,7 +19,7 @@ export function get(url, data) {
         for (let k in data) {
             request += (k + "=" + data[k] + "&");
         }
-        request = request.substring(0,request.length-1);
+        request = request.substring(0,request.length - 1);
     }
     return fetch(config.SERVICE_URL + url + '?' + request, {
         method: 'GET',
@@ -31,7 +31,9 @@ export function get(url, data) {
                 console.error('请求失败，状态码为：' + res.status)
             }
         }
-    ).catch(error => {throw error})
+    ).catch(error => {
+        throw error
+    })
 }
 
 export function post(url, data) {
@@ -43,7 +45,7 @@ export function post(url, data) {
     for (let k in data) {
         request += (k + "=" + data[k] + "&");
     }
-    request = request.substring(0,request.length-1);
+    request = request.substring(0, request.length - 1);
     return fetch(config.SERVICE_URL + url, {
         method: 'POST',
         // credentials: 'include',
@@ -56,7 +58,9 @@ export function post(url, data) {
                 console.error('请求失败，状态码为：' + res.status)
             }
         }
-    ).catch(error => {throw error})
+    ).catch(error => {
+        throw error
+    })
 }
 
 // export function onEnter(nextState, replace) {

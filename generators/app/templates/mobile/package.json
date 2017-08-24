@@ -1,6 +1,6 @@
 {
-  "name": "<%= appname %>",
-  "author": "<%= author %>",
+  "name": "a",
+  "author": "",
   "version": "1.0.0",
   "description": "",
   "license": "",
@@ -21,6 +21,7 @@
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
     "babel-core": "^6.9.1",
+    "babel-eslint": "^7.2.3",
     "babel-loader": "^6.2.4",
     "babel-plugin-add-module-exports": "^0.1.2",
     "babel-plugin-antd": "^0.4.0",
