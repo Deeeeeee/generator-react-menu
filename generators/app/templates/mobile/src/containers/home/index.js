@@ -13,6 +13,7 @@ import MainSection from '../../components/MainSection/MainSection';
  * 加载样式或图片文件
  * */
 import './sass/home.scss';
+import icon from '../../public/antd-icons/share/complaints.svg';
 
 
 class Home extends React.Component {
@@ -36,7 +37,7 @@ class Home extends React.Component {
                             <code>node server.js</code>
                             <p>打包命令：</p>
                             <code>
-                                npm run build-test <em>// 构建测试环境代码 <Icon type="search" /></em>
+                                npm run build-test <em>// 构建测试环境代码 </em>
                                 <br />
                                 npm run build-pro <em>// 构建开发环境代码 </em>
                             </code>

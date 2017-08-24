@@ -1,9 +1,9 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var mainDirectory = './main.js';
-var presets = ['react', 'es2015', 'stage-0', 'react-hmre'];
-var entry = ['webpack-hot-middleware/client', mainDirectory];
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const mainDirectory = './main.js';
+const presets = ['react', 'es2015', 'stage-0', 'react-hmre'];
+const entry = ['webpack-hot-middleware/client', mainDirectory];
 const pxtorem = require('postcss-pxtorem');
 
 
@@ -18,7 +18,7 @@ module.exports = {
                 loader: 'svg-sprite-loader',
                 include: [
                     require.resolve('antd-mobile').replace(/warn\.js$/, ''), // antd-mobile 内置svg
-                    //path.resolve(__dirname, 'src/my-project-svg-foler'),  // 业务代码本地私有 svg 存放目录
+                    path.resolve(__dirname, 'src/public/antd-icons')  // 业务代码本地私有 svg 存放目录
                 ]
             },
             {
