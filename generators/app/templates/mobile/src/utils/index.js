@@ -13,46 +13,17 @@ window.fetch = function(input, opts){//定义新的fetch方法，封装原有的
     });
     return Promise.race([fetchPromise, timeoutPromise])
 };
-// function ajaxGet(url) {
-//     return new Promise(function (resolve, reject) {
-//         var xhr = new XMLHttpRequest();
-//         xhr.open('GET', url, true);
-//         //xhr.setRequestHeader( 'Content-Type', 'application/json' );
-//         xhr.onreadystatechange = function () {
-//             if (4 == xhr.readyState) {
-//                 var status = xhr.status;
-//                 if ((status >= 200 && status < 300) || status == 304) {
-//                     var response = xhr.responseText.replace(/(\r|\n|\t)/gi, '');
-//                     // var m = /callback\((.+)\)/gi.exec( response );
-//                     // var result = { ret : 998, msg : '解析数据出错，请稍后再试' };
-//                     // try{ result = eval( '(' + m[1] + ')' ) } catch ( e ) {};
-//                     // result = eval( '(' + m[1] + ')' )
-//                     resolve(response);
-//                 } else {
-//                     reject(new Error('NetWorking Error!'));
-//                 }
-//             }
-//         };
-//         xhr.send();
-//     });
-// }
-//
-// export function ajaxFetch(url) {
-//     return ajaxGet(config.SERVICE_URL + url + '.do?industry=1').then(JSON.parse).catch(function (err) {
-//         throw err;
-//     });
-// }
-
 export function get(url, data) {
     var request = '';
     if (data) {
         for (let k in data) {
             request += (k + "=" + data[k] + "&");
         }
+        request = request.substring(0,request.length-1);
     }
     return fetch(config.SERVICE_URL + url + '?' + request, {
         method: 'GET',
-        credentials: 'include', // omit: 默认值，忽略cookie的发送 same-origin: cookie只能同域发送 include: cookie既可以同域发送，也可以跨域发送
+        // credentials: 'include', // omit: 默认值，忽略cookie的发送 same-origin: cookie只能同域发送 include: cookie既可以同域发送，也可以跨域发送
     }).then((res)=> {
             if (res.ok) {
                 return res.json()
@@ -60,23 +31,24 @@ export function get(url, data) {
                 console.error('请求失败，状态码为：' + res.status)
             }
         }
-    ).catch(function (err) {
-        throw err;
-    })
+    ).catch(error => {throw error})
 }
 
 export function post(url, data) {
-    var request;
-    var headers = new Headers();
-    headers.append("Content-Type", "application/x-www-form-urlencoded");
+    let headers = new Headers();
+    headers.append("Accept", "application/json,text/plain,*/*");
+    headers.append("Content-Type", "application/x-www-form-urlencoded; charset=utf-8;");
+    headers.append("accesstoken", getItem('token'));
+    let request = '';
     for (let k in data) {
-        request = k + "=" + data[k] + "&";
+        request += (k + "=" + data[k] + "&");
     }
-    return fetch(config.SERVICE_URL + url + '.do', {
+    request = request.substring(0,request.length-1);
+    return fetch(config.SERVICE_URL + url, {
         method: 'POST',
-        credentials: 'include',
+        // credentials: 'include',
         headers: headers,
-        body: request
+        body: encodeURI(request)
     }).then((res)=> {
             if (res.ok) {
                 return res.json()
@@ -84,9 +56,7 @@ export function post(url, data) {
                 console.error('请求失败，状态码为：' + res.status)
             }
         }
-    ).catch(function (err) {
-        throw err;
-    })
+    ).catch(error => {throw error})
 }
 
 // export function onEnter(nextState, replace) {
