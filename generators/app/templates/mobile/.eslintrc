@@ -54,3 +54,7 @@
         "no-mixed-spaces-and-tabs": 0
     }
 }
+
+//{
+//    "extends": "eslint-config-airbnb"
+//}
