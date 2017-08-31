@@ -1,102 +1,72 @@
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
 import config from '../config';
+import Promise from 'bluebird';
 
-// 为fetch添加超时
-let oldFetch = fetch; //拦截原始的fetch方法
-window.fetch = function(input, opts){//定义新的fetch方法，封装原有的fetch方法
-    var fetchPromise = oldFetch(input, opts);
-    var timeoutPromise = new Promise(function(resolve, reject){
-        setTimeout(()=>{
-            reject(new Error("请求超时"))
-        }, 10000)
-    });
-    return Promise.race([fetchPromise, timeoutPromise])
-};
-// function ajaxGet(url) {
-//     return new Promise(function (resolve, reject) {
-//         var xhr = new XMLHttpRequest();
-//         xhr.open('GET', url, true);
-//         //xhr.setRequestHeader( 'Content-Type', 'application/json' );
-//         xhr.onreadystatechange = function () {
-//             if (4 == xhr.readyState) {
-//                 var status = xhr.status;
-//                 if ((status >= 200 && status < 300) || status == 304) {
-//                     var response = xhr.responseText.replace(/(\r|\n|\t)/gi, '');
-//                     // var m = /callback\((.+)\)/gi.exec( response );
-//                     // var result = { ret : 998, msg : '解析数据出错，请稍后再试' };
-//                     // try{ result = eval( '(' + m[1] + ')' ) } catch ( e ) {};
-//                     // result = eval( '(' + m[1] + ')' )
-//                     resolve(response);
-//                 } else {
-//                     reject(new Error('NetWorking Error!'));
-//                 }
-//             }
-//         };
-//         xhr.send();
-//     });
-// }
-//
-// export function ajaxFetch(url) {
-//     return ajaxGet(config.SERVICE_URL + url + '.do?industry=1').then(JSON.parse).catch(function (err) {
-//         throw err;
-//     });
-// }
 
-export function get(url, data) {
-    var request = '';
+function get(url, data) {
+    let params = '?';
     if (data) {
         for (let k in data) {
-            request += (k + "=" + data[k] + "&");
+            params += (k + "=" + data[k] + "&");
         }
+        params = params.substring(0, params.length - 1);
     }
-    return fetch(config.SERVICE_URL + url + '?' + request, {
-        method: 'GET',
-        credentials: 'include', // omit: 默认值，忽略cookie的发送 same-origin: cookie只能同域发送 include: cookie既可以同域发送，也可以跨域发送
-    }).then((res)=> {
-            if (res.ok) {
-                return res.json()
-            } else {
-                console.error('请求失败，状态码为：' + res.status)
+    return new Promise(function (resolve, reject) {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', url + params, true);
+        //xhr.setRequestHeader( 'Content-Type', 'application/json' );
+        xhr.onreadystatechange = function () {
+            if (4 == xhr.readyState) {
+                let status = xhr.status;
+                if ((status >= 200 && status < 300) || status == 304) {
+                    let response = xhr.responseText.replace(/(\r|\n|\t)/gi, '');
+                    resolve(response);
+                } else {
+                    reject(new Error('NetWorking Error!'));
+                }
             }
-        }
-    ).catch(function (err) {
-        throw err;
-    })
+        };
+        xhr.send();
+    });
 }
 
-export function post(url, data) {
-    var request;
-    var headers = new Headers();
-    headers.append("Content-Type", "application/x-www-form-urlencoded");
-    for (let k in data) {
-        request = k + "=" + data[k] + "&";
-    }
-    return fetch(config.SERVICE_URL + url + '.do', {
-        method: 'POST',
-        credentials: 'include',
-        headers: headers,
-        body: request
-    }).then((res)=> {
-            if (res.ok) {
-                return res.json()
-            } else {
-                console.error('请求失败，状态码为：' + res.status)
+function post(url, data) {
+    return new Promise(function (resolve, reject) {
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', url, true);
+        //xhr.setRequestHeader( 'Content-Type', 'application/json' );
+        xhr.onreadystatechange = function () {
+            if (4 == xhr.readyState) {
+                let status = xhr.status;
+                if ((status >= 200 && status < 300) || status == 304) {
+                    let response = xhr.responseText.replace(/(\r|\n|\t)/gi, '');
+                    resolve(response);
+                } else {
+                    reject(new Error('NetWorking Error!'));
+                }
             }
-        }
-    ).catch(function (err) {
-        throw err;
-    })
+        };
+        xhr.send(data);
+    });
 }
+
+export function fetch(type, url, data) {
+    return type === 'get' ?
+        (
+            get(config.SERVICE_URL + url, data).then(JSON.parse).catch((err) => {
+                throw err;
+            })
+        ) : (
+            post(config.SERVICE_URL + url, data).then(JSON.parse).catch((err) => {
+                throw err;
+            })
+        )
+}
+
 
 // export function onEnter(nextState, replace) {
-//     var token = Cookies.get('CW_COOKIE_TOKEN');
+//     var token = Cookies.get('TOKEN');
 //     if (!token) {
-//         if (isCWBrowser())  {
-//             replace('/login');
-//         } else {
-//             replace('/welcome');
-//         }
+//         replace('/login');
 //     }
 // }
 
@@ -232,44 +202,6 @@ export function getClassTarget(event, property) {
     }
     return null;
 
-}
-
-export function isSafari() {
-    var userAgent = navigator.userAgent;
-    return userAgent.indexOf('Safari') > -1;
-}
-
-export function isIOS() {
-    var userAgent = navigator.userAgent;
-    return !!userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-}
-
-export function isCWBrowser() {
-    var userAgent = navigator.userAgent;
-    return userAgent.indexOf('CWBrowser') > -1;
-}
-
-export function isAndroid() {
-    var userAgent = navigator.userAgent;
-    return userAgent.indexOf('Android') > -1 || userAgent.indexOf('Adr') > -1;
-}
-
-export function isQQ() {
-    var userAgent = navigator.userAgent;
-    return userAgent.match(/QQ\//i) == "QQ/";
-}
-
-export function isWeiXin() {
-    var userAgent = window.navigator.userAgent.toLowerCase();
-    return userAgent.match(/MicroMessenger/i) == 'micromessenger'
-}
-
-export function transformToBinaryArr(no) {
-    return Number(no).toString(2).split('').map(item => Number(item));
-}
-
-export function validateImageUrl(url) {
-    return url.indexOf('http://') > -1 || url.indexOf('https://') > -1;
 }
 
 export function isLocalStorageSupported() {

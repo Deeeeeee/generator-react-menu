@@ -1,6 +1,6 @@
 {
-  "name": "<%= appname %>",
-  "author": "<%= author %>",
+  "name": "react-app",
+  "author": "Vinsmoke",
   "version": "1.0.0",
   "description": "",
   "license": "",
@@ -49,6 +49,7 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
+    "bluebird": "^3.5.0",
     "es6-promise": "^4.1.0",
     "isomorphic-fetch": "^2.2.1",
     "react": "^15.1.0",

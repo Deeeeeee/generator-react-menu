@@ -20,7 +20,7 @@ export default class Header extends React.Component {
 
     componentDidMount() {
         const {actions} = this.props;
-        actions.fetchWeather('杭州');
+        actions.fetchWeather({city:'杭州'});
         // actions.getUserInfo();
     }
 

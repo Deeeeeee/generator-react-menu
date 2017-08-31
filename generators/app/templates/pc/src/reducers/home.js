@@ -3,7 +3,9 @@ import { getItem } from '../utils';
 
 const initialObject = {
     bannerList: [],
-    weather: {}
+    weather: {
+        wendu: 0
+    }
 };
 const initialState = getItem('home') || initialObject;
 export default function home(state = initialState, action) {
