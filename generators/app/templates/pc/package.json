@@ -49,6 +49,7 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
+    "antd": "^2.12.8",
     "bluebird": "^3.5.0",
     "es6-promise": "^4.1.0",
     "isomorphic-fetch": "^2.2.1",

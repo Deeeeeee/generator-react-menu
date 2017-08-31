@@ -1,5 +1,7 @@
 import React from "react";
 import {Link} from 'react-router';
+import {Icon} from 'antd';
+
 import config from '../../config';
 
 /**
@@ -37,6 +39,7 @@ export default class Header extends React.Component {
                     <Link to="/" className="logo">
                         <img src={ logo } alt=""/> generator-react-menu
                     </Link>
+                    <Icon type="right"/>
                     <a href="https://github.com/Deeeeeee/generator-react-menu" className="github">Github</a>
                     <a href="javscript:;" className="wendu">{'气温：'+home.weather.wendu+ '℃'}</a>
                 </div>

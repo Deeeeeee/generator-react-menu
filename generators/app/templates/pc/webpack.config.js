@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var mainDirectory = './main.js';
-var presets = ['react', 'es2015', 'stage-0', 'react-hmre'] ;
+var presets = ['react', 'es2015', 'stage-0', 'react-hmre'];
 var entry = ['webpack-hot-middleware/client', mainDirectory];
 
 module.exports = {
@@ -14,7 +14,7 @@ module.exports = {
             {
                 test: /\.js?$/,
                 exclude: /(node_modules|bower_components|test)/,
-                use:{
+                use: {
                     loader: 'babel-loader',
                     options: {
                         presets: presets,
@@ -25,19 +25,19 @@ module.exports = {
             },
             {
                 test: /\.css?$/,
-                use: ['style-loader','raw-loader','autoprefixer-loader']
+                use: ['style-loader', 'raw-loader', 'autoprefixer-loader']
             },
             {
                 test: /\.less?$/,
                 use: [
                     'style-loader',
-                    { loader: 'css-loader', options: { importLoaders: 1 } },
+                    {loader: 'css-loader', options: {importLoaders: 1}},
                     'less-loader'
                 ]
             },
             {
                 test: /\.scss?$/,
-                use: ['style-loader','css-loader','sass-loader','autoprefixer-loader']
+                use: ['style-loader', 'css-loader', 'sass-loader', 'autoprefixer-loader']
             },
             {
                 test: /\.(png|jpg|)$/,
@@ -52,8 +52,8 @@ module.exports = {
         chunkFilename: '[id]_[hash].chunk.min.js',
         publicPath: '/dist/'
     },
-    plugins:[
+    plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin()
-    ] 
+    ]
 };

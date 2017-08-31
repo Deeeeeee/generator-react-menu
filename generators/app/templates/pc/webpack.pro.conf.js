@@ -15,7 +15,7 @@ module.exports = {
             {
                 test: /\.js?$/,
                 exclude: /(node_modules|bower_components|test)/,
-                use:{
+                use: {
                     loader: 'babel-loader',
                     options: {
                         presets: presets,
@@ -26,19 +26,19 @@ module.exports = {
             },
             {
                 test: /\.css?$/,
-                use: ['style-loader','raw-loader','autoprefixer-loader']
+                use: ['style-loader', 'raw-loader', 'autoprefixer-loader']
             },
             {
                 test: /\.less?$/,
                 use: [
                     'style-loader',
-                    { loader: 'css-loader', options: { importLoaders: 1 } },
+                    {loader: 'css-loader', options: {importLoaders: 1}},
                     'less-loader'
                 ]
             },
             {
                 test: /\.scss?$/,
-                use: ['style-loader','css-loader','sass-loader','autoprefixer-loader']
+                use: ['style-loader', 'css-loader', 'sass-loader', 'autoprefixer-loader']
             },
             {
                 test: /\.(png|jpg|)$/,
@@ -72,8 +72,8 @@ module.exports = {
             ['build/*',],　 //匹配删除的文件
             {
                 root: __dirname,       　　　　　　　　　　//根目录
-                verbose:  true,        　　　　　　　　　　//开启在控制台输出信息
-                dry:      false        　　　　　　　　　　//启用删除文件
+                verbose: true,        　　　　　　　　　　//开启在控制台输出信息
+                dry: false        　　　　　　　　　　//启用删除文件
             }
         )
     ]

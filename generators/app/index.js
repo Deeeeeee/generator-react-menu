@@ -21,18 +21,6 @@ module.exports = class extends Generator {
         this.log(yosay('Welcome to the groundbreaking ' + chalk.red('example') + ' generator!' ));
         const prompts = [
             {
-                type: 'input',
-                name: 'appname',
-                message: 'Name of app:', 
-                default: 'react-menu'
-            },
-            {
-                type: 'input',
-                name: 'author',
-                message: 'Author:', 
-                default: 'VinSmoke'
-            },
-            {
                 type: 'list',
                 name: 'isMobile',
                 message: 'Type of project',
@@ -42,7 +30,7 @@ module.exports = class extends Generator {
                 }, {
                     name: 'Mobile',
                     value: true
-                }],
+                }]
             }
         ];
         return this.prompt(prompts).then(props => {  
